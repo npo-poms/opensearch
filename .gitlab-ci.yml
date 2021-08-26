@@ -1,0 +1,4 @@
+include:
+  - project: 'shared/gitlab/gitlab-templates'
+    ref: 'tags/1.2'
+    file: 'docker_build.yml'
