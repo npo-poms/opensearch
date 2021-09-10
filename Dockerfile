@@ -15,4 +15,4 @@ USER 405
 
 ENTRYPOINT /elasticsearch/elasticsearch/bin/elasticsearch
 
-
+EXPOSE 9200
