@@ -1,3 +1,3 @@
-# VPRO-elasticsearch
+# VPRO-opensearch
 
-Elasticsearch with plugins pre-installed, such as `analysis-icu`.
+Opensearch with plugins pre-installed, such as `analysis-icu`.

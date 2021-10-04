@@ -1,18 +1,9 @@
-FROM adoptopenjdk/openjdk11:alpine-slim
+FROM opensearchproject/opensearch:latest
 
-ARG VERSION=7.14.1
-ARG ZIP=elasticsearch-${VERSION}-linux-x86_64.tar.gz
-ENV ES_JAVA_HOME=/opt/java/openjdk
-RUN apk add --no-cache curl bash &&  \
-   mkdir /elasticsearch && chown -R 405 /elasticsearch && \
-   cd /elasticsearch && curl https://artifacts.elastic.co/downloads/elasticsearch/$ZIP | tar zxf - && \
-   ln -s /elasticsearch/elasticsearch-$VERSION /elasticsearch/elasticsearch && \
-   /elasticsearch/elasticsearch/bin/elasticsearch-plugin install analysis-icu && \
-   chown -R 405  /elasticsearch/elasticsearch-$VERSION
+ENV cluster.name=opensearch
 
-COPY elasticsearch.yml /elasticsearch/elasticsearch/config/
-USER 405
-
-ENTRYPOINT /elasticsearch/elasticsearch/bin/elasticsearch
+#RUN bin/opensearch-plugin install analysis-icu
+RUN bin/opensearch-plugin install https://artifacts.opensearch.org/releases/plugins/analysis-icu/1.0.0/analysis-icu-1.0.0.zip
+COPY opensearch.yml /usr/share/opensearch/config
 
 EXPOSE 9200
