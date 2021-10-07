@@ -10,7 +10,7 @@ run: docker
 	touch $@
 
 explore:
-	docker run -it vpro-opensearch:dev bash
+	docker run --entrypoint bash -it vpro-opensearch:dev
 
 
 clean:

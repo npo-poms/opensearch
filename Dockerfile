@@ -1,5 +1,5 @@
 #FROM opensearchproject/opensearch:latest
-FROM amazon/opendistro-for-elasticsearch:1.13.2
+FROM amazon/opendistro-for-elasticsearch:1.8.0
 
 ENV DISTRO=elasticsearch
 
@@ -16,3 +16,5 @@ USER elasticsearch
 COPY $DISTRO.yml /usr/share/$DISTRO/config
 
 EXPOSE 9200
+
+ENTRYPOINT "/usr/share/$DISTRO/bin/$DISTRO"
