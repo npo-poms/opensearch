@@ -1,4 +1,4 @@
 include:
-  - project: 'poms-identity/poms/gitlab-templates'
+  - project: 'npo-identity/poms/gitlab-templates'
     ref: 'chp4'
     file: 'docker_build.yml'
