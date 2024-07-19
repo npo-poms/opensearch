@@ -1,3 +1,6 @@
+variables:
+  NAMESPACE: poms
+
 include:
   - project: 'npo-identity/poms/gitlab-templates'
     ref: 'chp4'
