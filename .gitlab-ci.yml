@@ -1,5 +1,6 @@
 variables:
   NAMESPACE: poms
+  IMAGE_NAME: poms-opensearch
 
 include:
   - project: 'npo-identity/poms/gitlab-templates'
