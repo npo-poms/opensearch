@@ -1,4 +1,8 @@
+variables:
+  NAMESPACE: poms
+  IMAGE_NAME: poms-opensearch
+
 include:
-  - project: 'shared/gitlab/gitlab-templates'
-    ref: 'master'
+  - project: 'npo-identity/poms/gitlab-templates'
+    ref: 'chp4'
     file: 'docker_build.yml'
