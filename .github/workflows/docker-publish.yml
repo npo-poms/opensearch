@@ -3,7 +3,7 @@ name: Docker
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "opendistro" ]
     tags: [ '*' ]
   workflow_dispatch:
 
