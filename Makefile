@@ -1,5 +1,5 @@
 TARGET=vpro-opensearch:dev
-.PHONY: run
+.PHONY: run rungh
 
 docker: Dockerfile opensearch.yml
 	docker build -t $(TARGET) .
@@ -9,6 +9,10 @@ run: docker
 	docker run -d --name opensearch -p 9200:9200 vpro-opensearch:dev
 	touch $@
 
+rungh:
+	docker run -d --name opensearch  -p 9200:9200 --platform linux/amd64 ghcr.io/npo-poms/opensearch:opendistro
+
+
 explore:
 	docker run --entrypoint bash -it vpro-opensearch:dev
 
@@ -16,6 +20,3 @@ explore:
 clean:
 	docker rm -f opensearch
 	rm -f run docker
-
-
-

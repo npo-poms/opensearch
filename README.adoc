@@ -1,0 +1,48 @@
+= VPRO-opensearch
+
+Opensearch with plugins pre-installed, such as `analysis-icu`.
+
+Opensearch currently is the distribution of Elasticsearch that is provided to us @Openshift.
+
+== Use in gitlab.ci
+
+Set up a service like so:
+[source, yaml]
+----
+.opensearch: 
+  services:
+    - name: ghcr.io/npo-poms/opensearch:opendistro-1.13.4
+      alias: opensearch  # Alias is also the hostname (i.e. http://opensearch:9200)
+  script:
+    - echo ES returns status code $(curl -s -o /tmp/health -w "%{http_code}" "http://opensearch:9200/_cluster/health?wait_for_status=green&timeout=50s")
+    - cat /tmp/health
+----
+
+== Test-container
+
+Even nicer may be using test containers:
+
+[source, java]
+----
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+
+...
+
+@Testcontainers
+public abstract class AbstractESPublisherRouteITest {
+    
+    @Container
+    public static GenericContainer<?> opensearch = new GenericContainer<>("ghcr.io/npo-poms/opensearch:opendistro-1.13.4")
+        .withExposedPorts(9200);
+
+    
+    @BeforeEach
+    public void abstractSetup() {
+        factory.setHosts(new HttpHost( opensearch.getHost(), opensearch.getMappedPort(9200)));
+        ..
+
+    }
+
+----
