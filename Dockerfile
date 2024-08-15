@@ -11,4 +11,5 @@ COPY $DISTRO.yml /usr/share/$DISTRO/config
 
 EXPOSE 9200
 
+SHELL ["/bin/bash", "-c"]
 ENTRYPOINT "/usr/share/$DISTRO/bin/$DISTRO"
