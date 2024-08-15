@@ -4,6 +4,8 @@ Opensearch with plugins pre-installed, such as `analysis-icu`.
 
 Opensearch currently is the distribution of Elasticsearch that is provided to us @Openshift.
 
+This is used in junit-tests. But may also be of use if we want to deploy a cheaper version for test/acceptance environments?
+
 == Use in gitlab.ci
 
 Set up a service like so:
