@@ -1,4 +1,4 @@
-= VPRO-opensearch
+= poms shared opensearch
 
 Opensearch with plugins pre-installed, such as `analysis-icu`.
 
